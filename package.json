@@ -1,0 +1,24 @@
+{
+  "name": "Impressive",
+  "version": "0.0.1",
+  "description": "Editor for creating impress.js based presentations",
+  "main": "main.js",
+  "namespace": "de.meandmymac.impressive",
+  "readme": "README.md",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thbonk/impressive.git"
+  },
+  "keywords": [],
+  "author": "Thomas Bonk",
+  "email": "thomas@meandmymac.de",
+  "license": "Apache-2.0",
+  "production": false,
+  "dependencies": {},
+  "devDependencies": {
+    "replace-in-file": "^2.5.3"
+  }
+}

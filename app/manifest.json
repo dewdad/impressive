@@ -1,0 +1,42 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "de.meandmymac.impressive",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1"
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true
+        },
+        "supportedThemes": [
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": "de.meandmymac.impressive.app.views.MainView",
+        "dependencies": {
+            "minUI5Version": "1.44",
+            "libs": {
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "de.meandmymac.impressive.app.i18n.i18n"
+                }
+            }
+        }
+    }
+}
