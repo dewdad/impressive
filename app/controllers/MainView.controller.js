@@ -21,16 +21,49 @@
  */
 
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], function (Controller) {
+    "sap/ui/core/mvc/Controller",
+    "de/meandmymac/impressive/app/models/Slides"
+], function (Controller, Slides) {
 
     "use strict";
 
     return Controller.extend("de.meandmymac.impressive.app.controllers.MainView", {
 
-        constructor: function(sName) {
-
+        constructor: function (sName) {
             Controller.apply(this, arguments);
+        },
+
+        onInit: function (oEvent) {
+            var view = this.getView();
+
+            this.model = new Slides();
+            view.setModel(this.model);
+        },
+
+        onAddSlide: function (oEvent) {
+            // The actual Item
+            var oItem = oEvent.getSource();
+            var iSelectedItemIndex = this._getIndexOfItem(oItem);
+
+            this.model.addSlide(iSelectedItemIndex);
+        },
+
+        onDeleteSlide: function (oEvent) {
+            // The actual Item
+            var oItem = oEvent.getSource();
+            var iSelectedItemIndex = this._getIndexOfItem(oItem);
+
+            this.model.deleteSlide(iSelectedItemIndex);
+        },
+
+        _getIndexOfItem: function(oItem) {
+            // The model that is bound to the item
+            // the name of your model should be a parameter in getBindingContext
+            var oContext = oItem.getBindingContext();
+            var sPath = oContext.getPath();
+            var iSelectedItemIndex = parseInt(sPath.substring(sPath.lastIndexOf('/') + 1));
+
+            return iSelectedItemIndex;
         }
     });
 });

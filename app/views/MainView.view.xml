@@ -22,17 +22,30 @@
 
 <mvc:View 
     xmlns="sap.m" 
-    xmlns:l="sap.ui.layout"
-    xmlns:core="sap.ui.core"
-    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout" 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
     xmlns:html="http://www.w3.org/1999/xhtml"
-    controllerName="de.meandmymac.impressive.app.controllers.MainView"
+    controllerName="de.meandmymac.impressive.app.controllers.MainView" 
     displayBlock="true">
-   <App>
-      <pages>
-        <Page title="Untitled">
-            
-        </Page>
-      </pages>
-   </App>
+
+    <List id="idSlidesList" items="{/Slides}">
+        <items>
+            <CustomListItem>
+                <Panel expandable="true" expanded="false" headerText="">
+                    <headerToolbar>
+                        <Toolbar height="4rem">
+                            <Input value="{title}"/>
+                            <ToolbarSpacer/>
+                            <Button icon="sap-icon://add" press="onAddSlide"/>
+                            <Button icon="sap-icon://delete" press="onDeleteSlide"/>
+                        </Toolbar>
+                    </headerToolbar>
+                    <content>
+                    </content>
+                </Panel>
+            </CustomListItem>
+        </items>
+    </List>
+
 </mvc:View>

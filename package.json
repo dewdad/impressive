@@ -19,6 +19,7 @@
   "production": false,
   "dependencies": {},
   "devDependencies": {
+    "electron": "^1.7.5",
     "replace-in-file": "^2.5.3"
   }
 }
