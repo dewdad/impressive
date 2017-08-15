@@ -41,22 +41,20 @@ sap.ui.define([
         },
 
         onAddSlide: function (oEvent) {
-            // The actual Item
-            var oItem = oEvent.getSource();
-            var iSelectedItemIndex = this._getIndexOfItem(oItem);
+            var iSelectedItemIndex = this._getIndexOfItemForEvent(oEvent);
 
             this.model.addSlide(iSelectedItemIndex);
         },
 
         onDeleteSlide: function (oEvent) {
-            // The actual Item
-            var oItem = oEvent.getSource();
-            var iSelectedItemIndex = this._getIndexOfItem(oItem);
+            var iSelectedItemIndex = this._getIndexOfItemForEvent(oEvent);
 
             this.model.deleteSlide(iSelectedItemIndex);
         },
 
-        _getIndexOfItem: function(oItem) {
+        _getIndexOfItemForEvent: function(oEvent) {
+            // The actual Item
+            var oItem = oEvent.getSource();
             // The model that is bound to the item
             // the name of your model should be a parameter in getBindingContext
             var oContext = oItem.getBindingContext();
