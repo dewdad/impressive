@@ -28,9 +28,10 @@ sap.ui.define([
     return JSONModel.extend("de.meandmymac.impressive.app.models.Slides", {
 
         _data: {
+            "Title": "Untitled.impr",
             "Slides": [
                 {
-                    "title": "My first cute Impressive presentation"
+                    "heading": "My first cute Impressive presentation"
                 }
             ]
         },

@@ -35,7 +35,7 @@
                 <Panel expandable="true" expanded="false" headerText="">
                     <headerToolbar>
                         <Toolbar height="4rem">
-                            <Input value="{title}"/>
+                            <Input value="{heading}"/>
                             <ToolbarSpacer/>
                             <Button icon="sap-icon://add" press="onAddSlide"/>
                             <Button icon="sap-icon://delete" press="onDeleteSlide"/>

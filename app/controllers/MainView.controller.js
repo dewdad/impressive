@@ -21,9 +21,10 @@
  */
 
 sap.ui.define([
+    "jquery.sap.global",
     "sap/ui/core/mvc/Controller",
     "de/meandmymac/impressive/app/models/Slides"
-], function (Controller, Slides) {
+], function (jQuery, Controller, Slides) {
 
     "use strict";
 
@@ -38,6 +39,22 @@ sap.ui.define([
 
             this.model = new Slides();
             view.setModel(this.model);
+        },
+
+        onAfterRendering: function() {
+            this._bindBrowserEvent("click", this.handleClick);
+        },
+
+        onBeforeRendering: function() {
+            this._unbindBrowserEvent("click", this.handleClick);
+        },
+
+        onExit: function() {
+            this._unbindBrowserEvent("click", this.handleClick);
+        },
+
+        handleClick: function(oEvent) {
+            console.log(oEvent);
         },
 
         onAddSlide: function (oEvent) {
@@ -62,6 +79,14 @@ sap.ui.define([
             var iSelectedItemIndex = parseInt(sPath.substring(sPath.lastIndexOf('/') + 1));
 
             return iSelectedItemIndex;
+        },
+
+        _bindBrowserEvent: function(sEventId, mMethod) {
+            jQuery.sap.byId(this.getId).bind(sEventId, jQuery.proxy(mMethod, this));
+        },
+
+        _unbindBrowserEvent: function(sEventId, mMethod) {
+            jQuery.sap.byId(this.getId).unbind(sEventId, jQuery.proxy(mMethod, this));
         }
     });
 });
