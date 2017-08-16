@@ -43,14 +43,17 @@ sap.ui.define([
 
         onAfterRendering: function() {
             this._bindBrowserEvent("click", this.handleClick);
+            this.model.attachEvent(this.model.MODEL_STATE_CHANGED(), this.modelStateChanged, this);
         },
 
         onBeforeRendering: function() {
             this._unbindBrowserEvent("click", this.handleClick);
+            this.model.detachEvent(this.model.MODEL_STATE_CHANGED(), this.modelStateChanged, this);
         },
 
         onExit: function() {
             this._unbindBrowserEvent("click", this.handleClick);
+            this.model.detachEvent(this.model.MODEL_STATE_CHANGED(), this.modelStateChanged, this);
         },
 
         handleClick: function(oEvent) {
@@ -67,6 +70,10 @@ sap.ui.define([
             var iSelectedItemIndex = this._getIndexOfItemForEvent(oEvent);
 
             this.model.deleteSlide(iSelectedItemIndex);
+        },
+
+        modelStateChanged: function(oEvent) {
+            console.log(oEvent);
         },
 
         _getIndexOfItemForEvent: function(oEvent) {
